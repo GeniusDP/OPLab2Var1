@@ -1,8 +1,14 @@
 #include <bits/stdc++.h>
-#include "Zaranik.h"
-#include "Moskalenko.h"
 
 using namespace std;
+
+struct Country{
+    char name[100];
+    int points[100]={};
+    int totalScore=0;
+};
+
+
 
 int main()
 {
