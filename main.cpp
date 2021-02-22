@@ -1,4 +1,6 @@
-#include <iostream>
+#include <bits/stdc++.h>
+#include "Zaranik.h"
+#include "Moskalenko.h"
 
 using namespace std;
 
