@@ -8,6 +8,7 @@ struct Country{
     int totalScore=0;
 };
 
+// function whick delete spaces from start and end
 string trim(string& str)
 {
     if (str == "")
@@ -20,6 +21,7 @@ string trim(string& str)
         return "";
 }
 
+// function which split string by symbol ','
 vector< string > splitStringByComma(string& str)
 {
     vector< string > answer;
@@ -42,6 +44,7 @@ vector< string > splitStringByComma(string& str)
     return answer;
 }
 
+// fucntion which reads data from files
 void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[260], int numberOfFiles)
 {
     (*numberOfCountries) = 0;
@@ -66,6 +69,7 @@ void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[2
     }
 }
 
+// comparator for sorting
 bool comp(Country x, Country y)
 {
     if (x.totalScore > y.totalScore)
@@ -73,10 +77,12 @@ bool comp(Country x, Country y)
     return false;
 }
 
+// write to file results.csv leader by total score
 void leadersByTotalScore(Country* contr, int numberOfCountries)
 {
     sort(contr, contr + numberOfCountries, comp);
     ofstream output("results.csv");
+    output << min(10, numberOfCountries) << endl;
     for (int i = 0; i < min(10, numberOfCountries); i++)
     {
         output << i + 1 << ") " << contr[i].name << " " << contr[i].totalScore << endl;
