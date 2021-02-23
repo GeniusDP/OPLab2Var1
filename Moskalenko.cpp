@@ -79,10 +79,38 @@ bool comp(Country x, Country y)
     return false;
 }
 
+// custom quick sort
+void qSort(Country* arr, int left, int right)
+{
+    int i = left, j = right, dj = -1;
+    if (right <= left)
+        return;
+    while(i != j)
+    {
+        if (arr[i].totalScore < arr[j].totalScore && dj == -1)
+        {
+            swap(arr[i], arr[j]);
+            swap(i, j);
+            dj *= -1;
+        }
+
+        if (arr[j].totalScore < arr[i].totalScore && dj == 1)
+        {
+            swap(arr[i], arr[j]);
+            swap(i, j);
+            dj *= -1;
+        }
+
+        j += dj;
+    }
+    qSort(arr, left, i - 1);
+    qSort(arr, i + 1, right);
+}
+
 // write to file results.csv leader by total score
 void leadersByTotalScore(Country* contr, int numberOfCountries)
 {
-    sort(contr, contr + numberOfCountries, comp);
+    qSort(contr, 0, numberOfCountries - 1);
     ofstream output("results.csv");
     output << min(10, numberOfCountries) << endl;
     for (int i = 0; i < min(10, numberOfCountries); i++)

@@ -65,7 +65,7 @@ void Qsort(Country* left, Country* right, bool (*compare)(Country, Country, int)
         i=left, j=right;
         int jstep = -1;
         bool dir = true;
-        while(i<j){
+        while(i!=j){
             if( comp(*i, *j, poleToSort)!=dir ){
                 swap(*i, *j);
                 swap(i, j);
