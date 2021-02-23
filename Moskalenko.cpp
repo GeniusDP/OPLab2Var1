@@ -42,7 +42,7 @@ vector< string > splitStringByComma(string& str)
     return answer;
 }
 
-void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[100], int numberOfFiles)
+void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[260], int numberOfFiles)
 {
     (*numberOfCountries) = 0;
     for (int i = 0; i < numberOfFiles; i++)
@@ -64,4 +64,22 @@ void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[1
         }
         input.close();
     }
+}
+
+bool comp(Country x, Country y)
+{
+    if (x.totalScore > y.totalScore)
+        return true;
+    return false;
+}
+
+void leadersByTotalScore(Country* contr, int numberOfCountries)
+{
+    sort(contr, contr + numberOfCountries, comp);
+    ofstream output("results.csv");
+    for (int i = 0; i < min(10, numberOfCountries); i++)
+    {
+        output << i + 1 << ") " << contr[i].name << " " << contr[i].totalScore << endl;
+    }
+    output.close();
 }
