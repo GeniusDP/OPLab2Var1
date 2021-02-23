@@ -59,9 +59,11 @@ void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[2
             string data;
             getline(input, data);
             vector< string > items = splitStringByComma(data);
-            for (int k = 0; k < items[0].size() && k < 100; k++)
+            int k;
+            for (k = 0; k < items[0].size() && k < 100; k++)
                 contr[*numberOfCountries].name[k] = items[0][k];
-            for (int k = 1; k < items.size(); k++)
+            contr[*numberOfCountries].name[k]='\0';
+            for (k = 1; k < items.size(); k++)
                 contr[*numberOfCountries].points[k - 1] = stoi(items[k]);
             (*numberOfCountries)++;
         }

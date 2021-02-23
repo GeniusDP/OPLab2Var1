@@ -51,6 +51,12 @@ int main()
     getNamesOfFiles(wayToFolder, namesOfFiles, &numberOfFiles);
 
     parsingFiles(contr, &numberOfCountries, namesOfFiles, numberOfFiles);
+//    for(int i=0; i<numberOfCountries; i++){
+//        cout << contr[i].name << " " ;
+//        for(int p=0; p<20; p++)
+//            cout << contr[i].points[p] << " ";
+//        cout << "*****************************************" << endl;
+//    }
 
     processing(contr, numberOfCountries);
 
