@@ -9,10 +9,9 @@ struct Country{
     int totalScore=0;
 };
 
-
-//Проверяет, евляется ли файл формата .csv
-//функция видима только внутри void getNamesOfFiles
-//так как больше нигде не используется
+//Checks is file in format .csv
+//function which is visible only inside void getNameOfFiles()
+//in case of does not use in other functions
 bool isCSV(char* fileName){
     int dotPos=0;
     while(dotPos<strlen(fileName) && fileName[dotPos]!='.')dotPos++;
@@ -26,7 +25,7 @@ bool isCSV(char* fileName){
 }
 
 
-//получить массив имен файлов(абсолютный путь)
+//to get array of names of files(absolute way)
 void getNamesOfFiles(char* wayToFolder,char (*namesOfFiles)[260], int* numberOfFiles){
     bool isCSV(char*);
     char* path = wayToFolder;
@@ -45,8 +44,6 @@ void getNamesOfFiles(char* wayToFolder,char (*namesOfFiles)[260], int* numberOfF
             ++*numberOfFiles;
         }
     }
-//    for(int i=0; i<*numberOfFiles; i++)
-//        printf("%s\n", namesOfFiles[i]);
     closedir(dir);
     /*
         D:\\Users\\Bogdan\\Desktop\\dir
@@ -87,10 +84,6 @@ void Qsort(Country* left, Country* right, bool (*compare)(Country, Country, int)
 void processing(Country* contr, int numberOfCountries){
     for(int parm=0; parm<20; parm++){
         Qsort(contr, contr+numberOfCountries-1, comp, parm);
-//        for(int i=0; i<numberOfCountries; i++){
-//            cout << contr[i].name << " " << contr[i].points[parm] << endl;
-//        }
-//        cout << "*****************************************" << endl;
         for(int i=0; i<numberOfCountries; i++){
             switch(i){
                 case 0: contr[i].totalScore+=12; break;

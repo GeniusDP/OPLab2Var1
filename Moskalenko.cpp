@@ -44,7 +44,7 @@ vector< string > splitStringByComma(string& str)
     return answer;
 }
 
-// fucntion which reads data from files
+// function which reads data from files
 void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[260], int numberOfFiles)
 {
     (*numberOfCountries) = 0;

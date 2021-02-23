@@ -9,7 +9,6 @@ struct Country{
 };
 
 //to get an array of names of files(absolute way)
-//has done
 void getNamesOfFiles(char* wayToFolder,char (*namesOfFiles)[260], int* numberOfFiles);
 
 
@@ -17,7 +16,6 @@ void getNamesOfFiles(char* wayToFolder,char (*namesOfFiles)[260], int* numberOfF
 void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[260], int numberOfFiles);
 
 //comfortable quick_sort of countries by points in each col
-//has done
 void Qsort(Country* left, Country* right, bool (*comp)(Country, Country, int), int posToCompare);
 
 
@@ -45,18 +43,12 @@ int main()
     int numberOfFiles=0;
 
 
-    cout << "¬ведите абсолютный путь к папке с файлами(разграничитель \\):\n";
+    cout << "¬ведите абсолютный путь к папке с файлами(разграничитель \\\\):\n";
     gets(wayToFolder);
 
     getNamesOfFiles(wayToFolder, namesOfFiles, &numberOfFiles);
 
     parsingFiles(contr, &numberOfCountries, namesOfFiles, numberOfFiles);
-//    for(int i=0; i<numberOfCountries; i++){
-//        cout << contr[i].name << " " ;
-//        for(int p=0; p<20; p++)
-//            cout << contr[i].points[p] << " ";
-//        cout << "*****************************************" << endl;
-//    }
 
     processing(contr, numberOfCountries);
 
