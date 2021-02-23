@@ -20,7 +20,7 @@ bool isCSV(char* fileName){
     string r="";
     for(int i=dotPos+1; i<strlen(fileName); i++)
         r+=fileName[i];
-    if(r=="txt")return true;
+    if(r=="csv")return true;
         else return false;
 }
 
