@@ -4,7 +4,7 @@ using namespace std;
 
 struct Country{
     char name[100]={};
-    int points[100]={};
+    int points[20]={};
     int totalScore=0;
 };
 

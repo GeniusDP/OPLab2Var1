@@ -8,19 +8,20 @@ struct Country{
     int totalScore=0;
 };
 
-//получить массив имен файлов(абсолютный путь)
+//to get an array of names of files(absolute way)
 //has done
 void getNamesOfFiles(char* wayToFolder,char (*namesOfFiles)[260], int* numberOfFiles);
 
-//процесс считывания информации из всех файлов с обраткой запятых(формат csv)
+
+//the process of reading information from all of the files in format .csv
 void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[260], int numberOfFiles);
 
-//удобная сортировка стран по кол-ву баллов в столбике
+//comfortable quick_sort of countries by points in each col
 //has done
 void Qsort(Country* left, Country* right, bool (*comp)(Country, Country, int), int posToCompare);
 
 
-//Главная функция обработки стран
+//function which makes all work
 void processing(Country* contr, int numberOfCountries);
 
 
@@ -48,12 +49,12 @@ int main()
     gets(wayToFolder);
 
     getNamesOfFiles(wayToFolder, namesOfFiles, &numberOfFiles);
-//
-//    parsingFiles(contr, &numberOfCountries, namesOfFiles, numberOfFiles);
-//
-//    processing(contr, numberOfCountries);
-//
-//    leadersByTotalScore(contr, numberOfCountries);
+
+    parsingFiles(contr, &numberOfCountries, namesOfFiles, numberOfFiles);
+
+    processing(contr, numberOfCountries);
+
+    leadersByTotalScore(contr, numberOfCountries);
 
     return 0;
 }
