@@ -50,6 +50,7 @@ void getNamesOfFiles(char* wayToFolder,char (*namesOfFiles)[260], int* numberOfF
     closedir(dir);
     /*
         D:\\Users\\Bogdan\\Desktop\\dir
+        D:\\Users\\Bogdan\\Desktop\\Introduction-To-Programming\\labs_spring_2020\\examples_2\\var1
     */
 }
 
