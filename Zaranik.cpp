@@ -32,15 +32,16 @@ void getNamesOfFiles(char* wayToFolder,char (*namesOfFiles)[260], int* numberOfF
     dirent *entry;
     DIR *dir = opendir(path);
     if (dir == NULL) {
-        printf("Folder not found.\n");
+        printf("Folder not found or folder is empty.\n");
         return;
     }
-
+    printf("Those are all files, from which we will get information.\n");
     while ((entry = readdir(dir)) != NULL){
         if( isCSV(entry->d_name) ){
             strcat(namesOfFiles[*numberOfFiles], wayToFolder);
             strcat(namesOfFiles[*numberOfFiles],"\\\\");
             strcat(namesOfFiles[*numberOfFiles], entry->d_name);
+            printf("%s\n", namesOfFiles[*numberOfFiles]);
             ++*numberOfFiles;
         }
     }
