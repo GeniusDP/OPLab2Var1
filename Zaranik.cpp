@@ -20,7 +20,7 @@ bool isCSV(char* fileName){
     string r="";
     for(int i=dotPos+1; i<strlen(fileName); i++)
         r+=fileName[i];
-    if(r=="csv")return true;
+    if(r=="txt")return true;
         else return false;
 }
 
@@ -37,12 +37,14 @@ void getNamesOfFiles(char* wayToFolder,char (*namesOfFiles)[260], int* numberOfF
 
     while ((entry = readdir(dir)) != NULL){
         if( isCSV(entry->d_name) ){
-            for(int i=0; i<strlen(entry->d_name); i++){
-                namesOfFiles[*numberOfFiles][i]=(entry->d_name)[i];
-            }
+            strcat(namesOfFiles[*numberOfFiles], wayToFolder);
+            strcat(namesOfFiles[*numberOfFiles],"\\\\");
+            strcat(namesOfFiles[*numberOfFiles], entry->d_name);
             ++*numberOfFiles;
         }
     }
+//    for(int i=0; i<*numberOfFiles; i++)
+//        printf("%s\n", namesOfFiles[i]);
     closedir(dir);
     /*
         D:\\Users\\Bogdan\\Desktop\\dir
