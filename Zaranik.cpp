@@ -38,9 +38,10 @@ void getNamesOfFiles(char* wayToFolder,char (*namesOfFiles)[260], int* numberOfF
 
     while ((entry = readdir(dir)) != NULL){
         if( isCSV(entry->d_name) ){
-            strcat(namesOfFiles[*numberOfFiles], wayToFolder);
-            strcat(namesOfFiles[*numberOfFiles],"\\\\");
-            strcat(namesOfFiles[*numberOfFiles], entry->d_name);
+                strcat(namesOfFiles[*numberOfFiles], wayToFolder);
+                strcat(namesOfFiles[*numberOfFiles],"\\\\");
+                strcat(namesOfFiles[*numberOfFiles], entry->d_name);
+            printf("%s\n", namesOfFiles[*numberOfFiles]);
             ++*numberOfFiles;
         }
     }
@@ -66,19 +67,18 @@ void Qsort(Country* left, Country* right, bool (*compare)(Country, Country, int)
         int jstep = -1;
         bool dir = true;
         while(i!=j){
-            if( comp(*i, *j, poleToSort)!=dir ){
+            if( compare(*i, *j, poleToSort)!=dir ){
                 swap(*i, *j);
                 swap(i, j);
-                jstep=-jstep;
-                dir=!dir;
+                jstep = -jstep;
+                dir = !dir;
             }
             j+=jstep;
         }
-        Qsort(left, i-1, comp, poleToSort);
-        Qsort(i+1, right, comp, poleToSort);
+        Qsort(left, i-1, compare, poleToSort);
+        Qsort(i+1, right, compare, poleToSort);
     }
 }
-
 
 //This function adds points to each country
 void processing(Country* contr, int numberOfCountries){
