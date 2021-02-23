@@ -9,9 +9,10 @@ struct Country{
     int totalScore=0;
 };
 
-//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ .csv
-//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ void getNamesOfFiles
-//пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+
+//Проверяет, евляется ли файл формата .csv
+//функция видима только внутри void getNamesOfFiles
+//так как больше нигде не используется
 bool isCSV(char* fileName){
     int dotPos=0;
     while(dotPos<strlen(fileName) && fileName[dotPos]!='.')dotPos++;
@@ -24,7 +25,8 @@ bool isCSV(char* fileName){
         else return false;
 }
 
-//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ)
+
+//получить массив имен файлов(абсолютный путь)
 void getNamesOfFiles(char* wayToFolder,char (*namesOfFiles)[260], int* numberOfFiles){
     bool isCSV(char*);
     char* path = wayToFolder;
