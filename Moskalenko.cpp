@@ -8,20 +8,35 @@ struct Country{
     int totalScore=0;
 };
 
-vector< string > splitStringByComma(string str)
+string trim(string& str)
+{
+    if (str == "")
+        return str;
+    int start = str.find_first_not_of(" "),
+        finish = str.find_last_not_of(" ");
+    if (start != -1 && finish != -1)
+        return str.substr(start, finish - start + 1);
+    else
+        return "";
+}
+
+vector< string > splitStringByComma(string& str)
 {
     vector< string > answer;
     string current;
     for (int i = 0; i < str.size(); i++)
     {
-        if (str[i] != ',')
+        if (str[i] != ',' && str[i] != ';')
             current += str[i];
         else
         {
-            answer.push_back(current);
+            current = trim(current);
+            if (current != "")
+                answer.push_back(current);
             current = "";
         }
     }
+    current = trim(current);
     if (current != "")
         answer.push_back(current);
     return answer;
@@ -29,13 +44,13 @@ vector< string > splitStringByComma(string str)
 
 void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[100], int numberOfFiles)
 {
-    numberOfCountries = 0;
+    (*numberOfCountries) = 0;
     for (int i = 0; i < numberOfFiles; i++)
     {
-        string nameFile = string(namesOfFiles[i]);
         ifstream input(namesOfFiles[i]);
         int N;
         input >> N;
+        input.ignore();
         for (int j = 0; j < N; j++)
         {
             string data;
@@ -47,5 +62,6 @@ void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[1
                 contr[*numberOfCountries].points[k - 1] = stoi(items[k]);
             (*numberOfCountries)++;
         }
+        input.close();
     }
 }
