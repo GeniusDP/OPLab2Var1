@@ -86,10 +86,10 @@ void Qsort(Country* left, Country* right, bool (*compare)(Country, Country, int)
 void processing(Country* contr, int numberOfCountries){
     for(int parm=0; parm<20; parm++){
         Qsort(contr, contr+numberOfCountries-1, comp, parm);
-        for(int i=0; i<numberOfCountries; i++){
-            cout << contr[i].name << " " << contr[i].points[parm] << endl;
-        }
-        cout << "*****************************************" << endl;
+//        for(int i=0; i<numberOfCountries; i++){
+//            cout << contr[i].name << " " << contr[i].points[parm] << endl;
+//        }
+//        cout << "*****************************************" << endl;
         for(int i=0; i<numberOfCountries; i++){
             switch(i){
                 case 0: contr[i].totalScore+=12; break;
