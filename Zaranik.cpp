@@ -78,3 +78,20 @@ void Qsort(Country* left, Country* right, bool (*compare)(Country, Country, int)
         Qsort(i+1, right, comp, poleToSort);
     }
 }
+
+
+//This function adds points to each country
+void processing(Country* contr, int numberOfCountries){
+    for(int parm=0; parm<20; parm++){
+        Qsort(contr, contr+numberOfCountries-1, comp, parm);
+        for(int i=0; i<numberOfCountries; i++){
+            switch(i){
+                case 0: contr[i].totalScore+=12; break;
+                case 1: contr[i].totalScore+=10; break;
+                case 2: case 3: case 4: case 5: case 6:
+                case 7: case 8: case 9: case 10:
+                    contr[i].totalScore+=(10-i>0)?10-i:0; break;
+            }
+        }
+    }
+}
