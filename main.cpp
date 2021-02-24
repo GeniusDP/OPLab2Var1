@@ -20,7 +20,7 @@ void Qsort(Country* left, Country* right, bool (*comp)(Country, Country, int), i
 
 
 //function which makes all work
-void processing(Country* contr, int numberOfCountries);
+void calcTotalScore(Country* contr, int numberOfCountries, vector< int >&);
 
 
 void leadersByTotalScore(Country* contr, int numberOfCountries);
@@ -41,16 +41,21 @@ int main()
     char wayToFolder[260]={};
     char namesOfFiles[100][260]={};//No more than 100 files
     int numberOfFiles=0;
-
-
+    vector< int > values;
+    int N;
     cout << "¬ведите абсолютный путь к папке с файлами(разграничитель \\\\):\n";
     gets(wayToFolder);
+    cout << "¬ведите количество элеметов values" << endl;
+    cin >> N;
+    values.resize(N);
+    for (int i = 0; i < N; i++)
+        cin >> values[i];
 
     getNamesOfFiles(wayToFolder, namesOfFiles, &numberOfFiles);
 
     parsingFiles(contr, &numberOfCountries, namesOfFiles, numberOfFiles);
 
-    processing(contr, numberOfCountries);
+    calcTotalScore(contr, numberOfCountries, values);
 
     leadersByTotalScore(contr, numberOfCountries);
 
