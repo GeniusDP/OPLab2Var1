@@ -71,13 +71,6 @@ void parsingFiles(Country* contr, int* numberOfCountries, char (*namesOfFiles)[2
     }
 }
 
-// comparator for sorting
-bool comp(Country x, Country y)
-{
-    if (x.totalScore > y.totalScore)
-        return true;
-    return false;
-}
 
 // custom quick sort
 void qSort(Country* arr, int left, int right)
@@ -93,14 +86,12 @@ void qSort(Country* arr, int left, int right)
             swap(i, j);
             dj *= -1;
         }
-
         if (arr[j].totalScore < arr[i].totalScore && dj == 1)
         {
             swap(arr[i], arr[j]);
             swap(i, j);
             dj *= -1;
         }
-
         j += dj;
     }
     qSort(arr, left, i - 1);
